@@ -54,38 +54,61 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(response => {
     const articles = response.data.articles
     const articlesTopics = Object.keys(articles)
+    console.log(articles)
+    console.log(articlesTopics)
 
-    const javascript = response.data.articles.javascript
-
-    javascript.forEach(cardInfo =>{
+    for(let i = 0; i < articlesTopics.length; i++){
+       const item = articlesTopics[i]
+       console.log(item)
+       const itemInfo = articles[`${item}`]
+       console.log(itemInfo)
+       itemInfo.forEach(cardInfo =>{
         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
-    })
-
-    const bootstrap = response.data.articles.bootstrap
-
-    bootstrap.forEach(cardInfo =>{
-        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
-    })
-
-    const technology = response.data.articles.technology
-
-    technology.forEach(cardInfo =>{
-        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
-    })
-
-    const jquery = response.data.articles.jquery
-
-    jquery.forEach(cardInfo => {
-        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
-    })
-
-    const node = response.data.articles.node
-
-    node.forEach(cardInfo =>{
-        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
-    })
+       })
+    }
 
 })
 .catch(error => {
     console.log(error)
 })
+
+
+// axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+// .then(response => {
+//     const articles = response.data.articles
+//     const articlesTopics = Object.keys(articles)
+
+//     const javascript = response.data.articles.javascript
+
+//     javascript.forEach(cardInfo =>{
+//         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+//     })
+
+//     const bootstrap = response.data.articles.bootstrap
+
+//     bootstrap.forEach(cardInfo =>{
+//         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+//     })
+
+//     const technology = response.data.articles.technology
+
+//     technology.forEach(cardInfo =>{
+//         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+//     })
+
+//     const jquery = response.data.articles.jquery
+
+//     jquery.forEach(cardInfo => {
+//         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+//     })
+
+//     const node = response.data.articles.node
+
+//     node.forEach(cardInfo =>{
+//         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+//     })
+
+// })
+// .catch(error => {
+//     console.log(error)
+// })
