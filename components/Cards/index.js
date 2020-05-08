@@ -54,14 +54,10 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(response => {
     const articles = response.data.articles
     const articlesTopics = Object.keys(articles)
-    console.log(articles)
-    console.log(articlesTopics)
 
     for(let i = 0; i < articlesTopics.length; i++){
        const item = articlesTopics[i]
-       console.log(item)
        const itemInfo = articles[`${item}`]
-       console.log(itemInfo)
        itemInfo.forEach(cardInfo =>{
         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
        })
