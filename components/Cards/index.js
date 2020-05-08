@@ -19,7 +19,6 @@
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
 const cardsCont = document.querySelector('.cards-container')
-console.log(cardsCont)
 
 function articleMaker(cardAttr){
     const {cardHead, imageUrl, cardAuthorName} = cardAttr
@@ -55,21 +54,15 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(response => {
     const articles = response.data.articles
     const articlesTopics = Object.keys(articles)
-    console.log(articlesTopics)
-
-    console.log(response.data)
-
 
     const javascript = response.data.articles.javascript
-    console.log(javascript)
 
     javascript.forEach(cardInfo =>{
         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
     })
 
     const bootstrap = response.data.articles.bootstrap
-    console.log(bootstrap)
-    
+
     bootstrap.forEach(cardInfo =>{
         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
     })

@@ -12,7 +12,7 @@
 // and append it to the DOM inside the div.header-container
 
 const headContainer = document.querySelector('.header-container')
-console.log(headContainer)
+
 function Header(headerAttr) {
     const {date, title, temp} = headerAttr
     const topHead = document.createElement('div')
