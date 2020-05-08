@@ -24,19 +24,14 @@ function tabMaker(tabTopic){
 
 axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
 .then(response => {
-    const tabsTopic = response.data.topics[1]
-    console.log(tabsTopic)
+    // const tabsTopic = response.data.topics[1]
+    // console.log(tabsTopic)
     const tabsName = response.data.topics
     console.log(tabsName)
     for(let i = 0; i < tabsName.length; i++){
         const newTab = tabMaker(tabsName[i])
         newTab.textContent = `${tabsName[i]}`
     }
-   
-    
-    
-    
-    // console.log(tab)
 })
 .catch(error => {
     console.log(error)
