@@ -54,19 +54,23 @@ function articleMaker(cardAttr){
 axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(response => {
     const articles = response.data.articles
+    const articlesTopics = Object.keys(articles)
+    console.log(articlesTopics)
 
-    console.log(response.data.articles)
-    const bootstrap = response.data.articles.bootstrap
-    console.log(bootstrap)
+    console.log(response.data)
 
-    bootstrap.forEach(cardInfo =>{
-        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
-    })
 
     const javascript = response.data.articles.javascript
     console.log(javascript)
 
     javascript.forEach(cardInfo =>{
+        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+    })
+
+    const bootstrap = response.data.articles.bootstrap
+    console.log(bootstrap)
+    
+    bootstrap.forEach(cardInfo =>{
         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
     })
 
@@ -76,8 +80,17 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
         const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
     })
 
+    const jquery = response.data.articles.jquery
 
+    jquery.forEach(cardInfo => {
+        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+    })
 
+    const node = response.data.articles.node
+
+    node.forEach(cardInfo =>{
+        const card = articleMaker({cardHead: cardInfo.headline, imageUrl: cardInfo.authorPhoto, cardAuthorName: cardInfo.authorName})
+    })
 
 })
 .catch(error => {

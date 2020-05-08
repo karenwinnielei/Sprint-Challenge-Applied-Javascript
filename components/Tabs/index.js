@@ -28,10 +28,17 @@ axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
     // console.log(tabsTopic)
     const tabsName = response.data.topics
     console.log(tabsName)
-    for(let i = 0; i < tabsName.length; i++){
-        const newTab = tabMaker(tabsName[i])
-        newTab.textContent = `${tabsName[i]}`
+
+    tabsName.forEach(tabInfo => {
+        const tab = tabMaker(tabInfo)
+        tab.textContent = `${tabInfo}`
     }
+
+    )
+    // for(let i = 0; i < tabsName.length; i++){
+    //     const newTab = tabMaker(tabsName[i])
+    //     newTab.textContent = `${tabsName[i]}`
+    // }
 })
 .catch(error => {
     console.log(error)

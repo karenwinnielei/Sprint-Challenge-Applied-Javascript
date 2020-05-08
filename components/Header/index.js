@@ -13,8 +13,8 @@
 
 const headContainer = document.querySelector('.header-container')
 console.log(headContainer)
-function Header() {
-    // const {date, title, temp} = headerAttr
+function Header(headerAttr) {
+    const {date, title, temp} = headerAttr
     const topHead = document.createElement('div')
     const theDate = document.createElement('span')
     const h1 = document.createElement('h1')
@@ -29,12 +29,11 @@ function Header() {
     theDate.classList.add('date')
     theTemp.classList.add('temp')
 
-    theDate.textContent = `SMARCH 28, 2019`
-    h1.textContent = `Lambda Times`
-    theTemp.textContent =  `98°`
+    theDate.textContent = `${date}`
+    h1.textContent = `${title}`
+    theTemp.textContent =  `${temp}`
 
-    console.log(topHead)
     return topHead
     
 }
-Header()
+Header({date: `SMARCH 28, 2019`, title: `Lambda Times`, temp: `98°`})
